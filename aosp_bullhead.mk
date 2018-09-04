@@ -24,6 +24,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
 PRODUCT_NAME := aosp_bullhead
 PRODUCT_DEVICE := bullhead
 PRODUCT_BRAND := Android
@@ -45,4 +48,11 @@ $(call inherit-product-if-exists, vendor/lge/bullhead/bullhead-vendor.mk)
 PRODUCT_PACKAGES += \
     Launcher3 \
     WallpaperPicker
+
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=bullhead \
+    PRIVATE_BUILD_DESC="bullhead-user 8.1.0 OPM6.171019.030.H1 4903069 release-keys"
+
+BUILD_FINGERPRINT := google/bullhead/bullhead:8.1.0/OPM6.171019.030.H1/4903069:user/release-keys
 
